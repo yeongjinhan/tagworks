@@ -18,11 +18,8 @@ import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
 
-/**
- * The type Tag works config.
- */
-@Keep
-public final class TagWorksConfig {
+
+@Keep public final class TagWorksConfig {
 
     private final String siteId;
     private final String baseUrl;
@@ -34,7 +31,7 @@ public final class TagWorksConfig {
     /**
      * The type Builder.
      */
-    public static final class Builder {
+    @Keep public static final class Builder {
         private String siteId;
         private String baseUrl;
         private long sessionTimeOut = 30;

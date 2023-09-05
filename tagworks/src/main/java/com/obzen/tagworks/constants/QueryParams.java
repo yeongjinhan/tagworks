@@ -14,9 +14,12 @@
 
 package com.obzen.tagworks.constants;
 
+import androidx.annotation.Keep;
+
 /**
  * The enum Query params.
  */
+@Keep
 public enum QueryParams {
 
     /**

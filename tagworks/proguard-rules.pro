@@ -67,11 +67,6 @@
 
 # ==================================================================
 
--dontshrink
--verbose
--ignorewarnings
-
-
 # ====================== [project settings] ========================
 
 # [디버깅 모드에서 난독화 제외 설정]
@@ -79,11 +74,24 @@
 #-dontoptimize
 #-dontobfuscate
 
+-dontshrink
+-ignorewarnings
+
 # ==================================================================
 
+# =========================  [TagWorks]  ===========================
 
+-keepclassmembers class *
+-keepclassmembers enum *
+-keepattributes Annotation
+-keepattributes Signature
+-keepattributes EnclosingMethod
+-keepattributes InnerClasses
+-keep class com.obzen.tagworks.TagWorks { *; }
+-keep class com.obzen.tagworks.TagWorksConfig { *; }
+-keep class com.obzen.tagworks.constants.** { *; }
 
-
+# ==================================================================
 
 # ========================= [AltBeacon] ===========================
 
@@ -92,10 +100,6 @@
 -keep interface org.altbeacon.** { *; }
 
 # ==================================================================
-
-
-
-
 
 # ========================== [Firebase] ============================
 
@@ -183,7 +187,6 @@
 -keep interface com.gun0912.tedpermission.** { *; }
 
 # ==================================================================
-
 
 
 
