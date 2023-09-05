@@ -29,10 +29,6 @@
 
 # ==================================================================
 
-
-
-
-
 # ====================== [proguard option] =========================
 
 #-dontwarn 패키지명.** : 지정해서 경고 무시
@@ -76,129 +72,20 @@
 
 -dontshrink
 -ignorewarnings
+-keepparameternames
+-keepattributes Exceptions,InnerClasses,Signature,Deprecated,
+        SourceFile,LineNumberTable,*Annotation*,EnclosingMethod
 
 # ==================================================================
 
 # =========================  [TagWorks]  ===========================
 
--keepclassmembers class *
--keepclassmembers enum *
--keepattributes Annotation
--keepattributes Signature
--keepattributes EnclosingMethod
--keepattributes InnerClasses
 -keep class com.obzen.tagworks.TagWorks { *; }
 -keep class com.obzen.tagworks.TagWorksConfig { *; }
 -keep class com.obzen.tagworks.constants.** { *; }
-
-# ==================================================================
-
-# ========================= [AltBeacon] ===========================
-
--dontwarn org.altbeacon.**
--keep class org.altbeacon.** { *; }
--keep interface org.altbeacon.** { *; }
-
-# ==================================================================
-
-# ========================== [Firebase] ============================
-
--keepattributes *Annotation*
--keepattributes Signature
-
-# ==================================================================
-
-
-
-
-
-# ============================ [V3] ===============================
-
--dontwarn com.ahnlab.enginesdk.**
--keep class com.ahnlab.enginesdk.** { *; }
--keep interface com.ahnlab.enginesdk.** { *; }
-
-# ==================================================================
-
-
-
-
-
-# ====================== [class and google] ========================
-
--keep class com.google.android.** { *; }
--keep class google.** { *; }
--keep class android.** { *; }
--keep class androidx.** { *; }
--keep class com.android.** { *; }
--keep class com.google.** { *; }
--keep class lambda* { *; }
--keepclassmembers enum * {
-    values(...);
-    valueOf(...);
+-keep interface * {
+   <methods>;
 }
--keepclasseswithmembers class * {
-    native <methods>;
+-keepclassmembernames class * {
+    public protected <methods>;
 }
--keep public class * extends android.app.Activity { *; }
--keep public class * extends android.app.Application { *; }
--keep public class * extends android.app.Service { *; }
--keep public class * extends android.content.BroadcastReceiver { *; }
--keep public class * extends android.content.ContentProvider { *; }
--keep public class * extends android.app.backup.BackupAgentHelper { *; }
--keep public class * extends android.preference.Preference { *; }
--keep public class * extends android.widget.TextView { *; }
--keep public class * extends android.widget.Button { *; }
-
-# ==================================================================
-
-
-
-
-
-# ==================== [ok http and retrofit] ======================
-
--keep class okhttp3.** { *; }
--keep class okio.** { *; }
--keep class retrofit2.** { *; }
-
-# ==================================================================
-
-
-
-
-
-# ===================== [webview javascript] =======================
-
--keepclassmembers class * {
-	@android.webkit.JavascriptInterface <methods>;
-}
-
-# ==================================================================
-
-
-
-
-
-# ========================= [tedpermission] =========================
-
--dontwarn com.gun0912.tedpermission.**
--keep class com.gun0912.tedpermission.** { *; }
--keep interface com.gun0912.tedpermission.** { *; }
-
-# ==================================================================
-
-
-
-
-# ========================== [glide image] =========================
-
--dontwarn com.bumptech.glide.**
--keep class com.bumptech.glide.** { *; }
--keep interface com.bumptech.glide.** { *; }
--keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
-  **[] $VALUES;
-  public *;
-}
-
-# ==================================================================

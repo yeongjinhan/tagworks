@@ -137,7 +137,7 @@ public class TagWorks {
     }
 
 
-    private TagWorks(@NonNull Context context, @NonNull TagWorksConfig config){
+    @Keep private TagWorks(@NonNull Context context, @NonNull TagWorksConfig config){
         this.context = context;
         this.config = config;
         this.siteId = config.getSiteId();
@@ -159,6 +159,7 @@ public class TagWorks {
      * @return the tag works
      */
     @NonNull
+    @Keep
     public static TagWorks getInstance(){
         TagWorks instance = INSTANCE.get(INSTANCE_KEY);
         if(instance == null){
@@ -178,6 +179,7 @@ public class TagWorks {
      * @return the tag works
      */
     @NonNull
+    @Keep
     public static TagWorks initializeSdk(@NonNull Context context, @NonNull String siteId, @NonNull String baseUrl){
         synchronized(INSTANCE_LOCK){
             if(INSTANCE.containsKey(INSTANCE_KEY)){
@@ -201,6 +203,7 @@ public class TagWorks {
      * @return the tag works
      */
     @NonNull
+    @Keep
     public static TagWorks initializeSdk(@NonNull Context context, @NonNull TagWorksConfig config){
         synchronized(INSTANCE_LOCK){
             if(INSTANCE.containsKey(INSTANCE_KEY)){
