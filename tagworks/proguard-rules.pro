@@ -80,11 +80,12 @@
 
 # =========================  [TagWorks]  ===========================
 
--keep class com.obzen.tagworks.TagWorks { *; }
--keep class com.obzen.tagworks.TagWorksConfig { *; }
--keep class com.obzen.tagworks.constants.** { *; }
+#-keep class com.obzen.tagworks.TagWorks { *; }
+#-keep class com.obzen.tagworks.TagWorksConfig { *; }
+#-keep class com.obzen.tagworks.constants.** { *; }
+
 -keep interface * {
-   <methods>;
+   public protected <methods>;
 }
 -keepclassmembernames class * {
     public protected <methods>;
