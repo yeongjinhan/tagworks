@@ -305,7 +305,8 @@ public class TagWorks {
     /**
      * The type Event push builder.
      */
-    @Keep public static class EventPushBuilder{
+    @Keep
+    public static class EventPushBuilder{
 
         /**
          * Event event builder.
@@ -347,7 +348,8 @@ public class TagWorks {
         /**
          * The type Page view builder.
          */
-        @Keep protected static class PageViewBuilder extends BaseBuilder{
+        @Keep
+        public static class PageViewBuilder extends BaseBuilder{
 
             private final String pagePath;
             private final String pageTitle;
@@ -388,7 +390,8 @@ public class TagWorks {
         /**
          * The type Event builder.
          */
-        @Keep protected static class EventBuilder extends BaseBuilder{
+        @Keep
+        public static class EventBuilder extends BaseBuilder{
 
             private final String eventKey;
             private final String customUserPath;
