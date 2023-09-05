@@ -84,6 +84,9 @@
 #-keep class com.obzen.tagworks.TagWorksConfig { *; }
 #-keep class com.obzen.tagworks.constants.** { *; }
 
+-keep class * {
+   public protected <methods>;
+}
 -keep interface * {
    public protected <methods>;
 }
