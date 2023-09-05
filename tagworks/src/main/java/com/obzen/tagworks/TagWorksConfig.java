@@ -14,12 +14,14 @@
 
 package com.obzen.tagworks;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 
 
 /**
  * The type Tag works config.
  */
+@Keep
 public final class TagWorksConfig {
 
     private final String siteId;

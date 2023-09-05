@@ -23,6 +23,7 @@ import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.GuardedBy;
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -61,6 +62,7 @@ public class TagWorks {
      *
      * @return the string
      */
+    @Keep
     public String getSiteId(){
         return siteId;
     }
@@ -70,6 +72,7 @@ public class TagWorks {
      *
      * @return the string
      */
+    @Keep
     public String getBaseUrl(){
         return baseUrl;
     }
@@ -79,6 +82,7 @@ public class TagWorks {
      *
      * @param userId the user id
      */
+    @Keep
     public void setUserId(String userId){
         PreferencesUtil.setString(context, PRE_KEY_USER_ID, userId);
     }
@@ -88,6 +92,7 @@ public class TagWorks {
      *
      * @return the string
      */
+    @Keep
     public String getUserId(){
         return PreferencesUtil.getString(context, PRE_KEY_USER_ID);
     }
@@ -97,6 +102,7 @@ public class TagWorks {
      *
      * @param visitorId the visitor id
      */
+    @Keep
     public void setVisitorId(String visitorId){
         if(checkValidVisitorId(visitorId)){
             PreferencesUtil.setString(context, PRE_KEY_VISITOR_ID, visitorId);
@@ -108,6 +114,7 @@ public class TagWorks {
      *
      * @return the string
      */
+    @Keep
     public String getVisitorId(){
         String visitorId = PreferencesUtil.getString(context, PRE_KEY_VISITOR_ID);
         if(isEmpty(visitorId)){
@@ -122,6 +129,7 @@ public class TagWorks {
      *
      * @param optOut the opt out
      */
+    @Keep
     public void setOptOut(boolean optOut){
         PreferencesUtil.setBoolean(context, PRE_KEY_OPT_OUT, optOut);
     }
@@ -131,9 +139,11 @@ public class TagWorks {
      *
      * @return the boolean
      */
+    @Keep
     public boolean getOptOut(){
         return PreferencesUtil.getBoolean(context, PRE_KEY_OPT_OUT);
     }
+
 
     private TagWorks(@NonNull Context context, @NonNull TagWorksConfig config){
         this.context = context;
@@ -157,6 +167,7 @@ public class TagWorks {
      * @return the tag works
      */
     @NonNull
+    @Keep
     public static TagWorks getInstance(){
         TagWorks instance = INSTANCE.get(INSTANCE_KEY);
         if(instance == null){
@@ -176,6 +187,7 @@ public class TagWorks {
      * @return the tag works
      */
     @NonNull
+    @Keep
     public static TagWorks initializeSdk(@NonNull Context context, @NonNull String siteId, @NonNull String baseUrl){
         synchronized(INSTANCE_LOCK){
             if(INSTANCE.containsKey(INSTANCE_KEY)){
@@ -199,6 +211,7 @@ public class TagWorks {
      * @return the tag works
      */
     @NonNull
+    @Keep
     public static TagWorks initializeSdk(@NonNull Context context, @NonNull TagWorksConfig config){
         synchronized(INSTANCE_LOCK){
             if(INSTANCE.containsKey(INSTANCE_KEY)){
@@ -231,6 +244,7 @@ public class TagWorks {
      *
      * @param path the path
      */
+    @Keep
     public void setContentUrl(String path){
         contentUrl = contentBaseUrl + path;
     }
@@ -240,6 +254,7 @@ public class TagWorks {
      *
      * @return the string
      */
+    @Keep
     public String getContentUrl(){
         return contentUrl;
     }
@@ -249,6 +264,7 @@ public class TagWorks {
      *
      * @return the string
      */
+    @Keep
     public String getUserAgent(){
         return deviceInfo.getUserAgent();
     }
@@ -259,6 +275,7 @@ public class TagWorks {
      * @param index the index
      * @param value the value
      */
+    @Keep
     public void setDimension(int index, String value){
         dimensions.put(index, value);
     }
@@ -269,6 +286,7 @@ public class TagWorks {
      * @param index the index
      * @return the string
      */
+    @Keep
     public String getDimension(int index){
         return dimensions.get(index);
     }
@@ -278,6 +296,7 @@ public class TagWorks {
      *
      * @return the hash map
      */
+    @Keep
     public HashMap<Integer, String> getDimensions(){
         return dimensions;
     }
@@ -300,6 +319,7 @@ public class TagWorks {
     /**
      * The type Event push builder.
      */
+    @Keep
     public static class EventPushBuilder{
 
         /**
@@ -310,6 +330,7 @@ public class TagWorks {
          * @return the event builder
          */
         @NonNull
+        @Keep
         public static EventBuilder event(@NonNull StandardEvent eventKey, @Nullable String customUserPath){
             return new EventBuilder(getInstance(), eventKey.getValue(), customUserPath);
         }
@@ -322,6 +343,7 @@ public class TagWorks {
          * @return the event builder
          */
         @NonNull
+        @Keep
         public static EventBuilder event(@NonNull String eventKey, @Nullable String customUserPath){
             return new EventBuilder(getInstance(), eventKey, customUserPath);
         }
@@ -335,6 +357,7 @@ public class TagWorks {
          * @return the page view builder
          */
         @NonNull
+        @Keep
         public static PageViewBuilder pageView(@NonNull String pagePath, @Nullable String pageTitle, @Nullable String customUserPath){
             return new PageViewBuilder(getInstance(), pagePath, pageTitle, customUserPath);
         }
@@ -364,12 +387,14 @@ public class TagWorks {
             }
 
             @Override
+            @Keep
             public PageViewBuilder dimension(int index, @NonNull String value) {
                 dimensions.put(index, value);
                 return this;
             }
 
             @Override
+            @Keep
             public void push() {
                 Event event = new Event(dimensions);
                 event.setEvent(StandardEvent.PAGE_VIEW);
@@ -403,12 +428,14 @@ public class TagWorks {
             }
 
             @Override
+            @Keep
             public EventBuilder dimension(int index, @NonNull String value) {
                 dimensions.put(index, value);
                 return this;
             }
 
             @Override
+            @Keep
             public void push() {
                 Event event = new Event(dimensions);
                 event.setEvent(eventKey);
