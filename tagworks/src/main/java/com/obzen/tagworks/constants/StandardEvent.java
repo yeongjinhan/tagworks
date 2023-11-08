@@ -42,6 +42,7 @@ public enum StandardEvent {
      * Out link standard event.
      */
     OUT_LINK("OutLink"),
+    ERROR("Error"),
     /**
      * Search standard event.
      */
