@@ -19,6 +19,7 @@ import static com.obzen.tagworks.util.VerificationUtil.checkValidBaseUrl;
 import static com.obzen.tagworks.util.VerificationUtil.checkValidSiteId;
 import static com.obzen.tagworks.util.VerificationUtil.checkValidVisitorId;
 
+import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
@@ -33,6 +34,7 @@ import com.obzen.tagworks.constants.StandardEventParams;
 import com.obzen.tagworks.data.Event;
 import com.obzen.tagworks.dispatcher.EventDispatcher;
 import com.obzen.tagworks.dispatcher.PacketSender;
+import com.obzen.tagworks.handler.ApplicationExceptionHandler;
 import com.obzen.tagworks.util.PreferencesUtil;
 
 import java.util.HashMap;
@@ -42,7 +44,7 @@ import java.util.UUID;
 /**
  * The type Tag works.
  */
-public class TagWorks {
+public class TagWorks extends Application{
 
     private static final String PRE_KEY_VISITOR_ID = "tagworks.visitorid";
     private static final String PRE_KEY_USER_ID = "tagworks.userid";
@@ -221,6 +223,9 @@ public class TagWorks {
         synchronized(INSTANCE_LOCK){
             instance = new TagWorks(context, config);
             INSTANCE.put(INSTANCE_KEY, instance);
+
+            Thread.setDefaultUncaughtExceptionHandler(new ApplicationExceptionHandler(instance));
+
             return instance;
         }
     }
