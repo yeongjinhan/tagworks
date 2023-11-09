@@ -18,6 +18,12 @@ public class ApplicationExceptionHandler implements Thread.UncaughtExceptionHand
     @Override
     public void uncaughtException(@NonNull Thread thread, @NonNull Throwable throwable) {
         Log.e("TAGWORKS_ERROR", throwable.toString());
-        TagWorks.EventPushBuilder.event(StandardEvent.ERROR, null).dimension(51, throwable.toString()).push();
+        try{
+            TagWorks.EventPushBuilder.event(StandardEvent.ERROR, null).dimension(51, throwable.getMessage()).push();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            Thread.getDefaultUncaughtExceptionHandler().uncaughtException(thread, throwable);
+        }
     }
 }

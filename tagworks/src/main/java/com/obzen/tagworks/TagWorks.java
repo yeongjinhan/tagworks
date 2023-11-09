@@ -44,7 +44,7 @@ import java.util.UUID;
 /**
  * The type Tag works.
  */
-public class TagWorks extends Application{
+public class TagWorks{
 
     private static final String PRE_KEY_VISITOR_ID = "tagworks.visitorid";
     private static final String PRE_KEY_USER_ID = "tagworks.userid";
