@@ -23,7 +23,9 @@ public class ApplicationExceptionHandler implements Thread.UncaughtExceptionHand
         }catch (Exception e){
             e.printStackTrace();
         }finally {
-            Thread.getDefaultUncaughtExceptionHandler().uncaughtException(thread, throwable);
+            if(!(Thread.getDefaultUncaughtExceptionHandler() instanceof ApplicationExceptionHandler)){
+                Thread.getDefaultUncaughtExceptionHandler().uncaughtException(thread, throwable);
+            }
         }
     }
 }
