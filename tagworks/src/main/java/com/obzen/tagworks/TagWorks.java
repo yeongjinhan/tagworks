@@ -224,7 +224,7 @@ public class TagWorks{
             instance = new TagWorks(context, config);
             INSTANCE.put(INSTANCE_KEY, instance);
 
-            Thread.setDefaultUncaughtExceptionHandler(new ApplicationExceptionHandler(instance));
+           //Thread.setDefaultUncaughtExceptionHandler(new ApplicationExceptionHandler(instance));
 
             return instance;
         }

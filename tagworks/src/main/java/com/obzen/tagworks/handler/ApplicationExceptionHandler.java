@@ -7,9 +7,9 @@ import androidx.annotation.NonNull;
 import com.obzen.tagworks.TagWorks;
 import com.obzen.tagworks.constants.StandardEvent;
 
-public class ApplicationExceptionHandler implements Thread.UncaughtExceptionHandler {
+public class ApplicationExceptionHandler  {
 
-    private TagWorks tagWorks;
+    /*private TagWorks tagWorks;
 
     public ApplicationExceptionHandler(TagWorks tagWorks){
         this.tagWorks = tagWorks;
@@ -17,7 +17,6 @@ public class ApplicationExceptionHandler implements Thread.UncaughtExceptionHand
 
     @Override
     public void uncaughtException(@NonNull Thread thread, @NonNull Throwable throwable) {
-        Log.e("TAGWORKS_ERROR", throwable.toString());
         try{
             TagWorks.EventPushBuilder.event(StandardEvent.ERROR, null).dimension(51, throwable.getMessage()).push();
         }catch (Exception e){
@@ -27,5 +26,5 @@ public class ApplicationExceptionHandler implements Thread.UncaughtExceptionHand
                 Thread.getDefaultUncaughtExceptionHandler().uncaughtException(thread, throwable);
             }
         }
-    }
+    }*/
 }

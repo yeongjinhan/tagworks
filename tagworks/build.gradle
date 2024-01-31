@@ -5,11 +5,11 @@ plugins {
 
 android {
     namespace 'com.obzen.tagworks'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         minSdk 17
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -18,7 +18,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -44,7 +44,7 @@ afterEvaluate {
 
                 groupId = 'com.obzen.tagworks'
                 artifactId = 'tagworks'
-                version  "1.0.9"
+                version  "1.1.5"
             }
         }
     }
