@@ -76,8 +76,8 @@ public class Base {
     public String toSerializeString() {
         StringBuilder paramsStringBuilder = new StringBuilder();
         for (Map.Entry<String, String> entry : params.entrySet()) {
-            //paramsStringBuilder.append(urlEncodeUTF8(entry.getKey())).append(DELIMITER_MAPS).append(urlEncodeUTF8(entry.getValue())).append(DELIMITER_PARAMS);
-            paramsStringBuilder.append((entry.getKey())).append(DELIMITER_MAPS).append((entry.getValue())).append(DELIMITER_PARAMS);
+            paramsStringBuilder.append(urlEncodeUTF8(entry.getKey())).append(DELIMITER_MAPS).append(urlEncodeUTF8(entry.getValue())).append(DELIMITER_PARAMS);
+            //paramsStringBuilder.append((entry.getKey())).append(DELIMITER_MAPS).append((entry.getValue())).append(DELIMITER_PARAMS);
         }
         return paramsStringBuilder
                 .deleteCharAt(paramsStringBuilder.length() - 1)
